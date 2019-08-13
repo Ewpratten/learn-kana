@@ -41,6 +41,9 @@ def setTicker(line):
     trunc_line = "".join(line)[: int(term_width / 2)][1:]
     first_char = line[0]
 
+    # Clear line
+    print(">" + " " * (term_width - 1), end="\r", flush=True)
+
     # Display the first char in green
     print("\u001b[37m\u001b[42;1m" + first_char, end="", flush=True)
 
@@ -79,7 +82,7 @@ def pickKana(n):
 if __name__ == "__main__":
 
     # Pick 100 random hiragana
-    challenge_set = pickKana(100)
+    challenge_set = pickKana(20)
 
     # newlines for ticker and input
     print("\n" * (2 + gap), end="")
@@ -103,6 +106,10 @@ if __name__ == "__main__":
         if data == "ー":
             challenge_set = challenge_set[1:]
             continue
+        
+        # Check if we should stop the game
+        if data == "＝":
+            break
 
         # Get input as hiragana
         kana = acceptchar(data)
