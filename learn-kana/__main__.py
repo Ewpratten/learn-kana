@@ -128,7 +128,7 @@ if __name__ == "__main__":
 
             print(kana_set[kana], end="", flush=True)
 
-            success -= 1
+            successes -= 1
             continue
 
         # Get input as hiragana
