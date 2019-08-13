@@ -8,6 +8,7 @@ term_height, term_width = int(term[0]), int(term[1]) - 5
 # term_width = 30 # i have issues
 
 gap = 5
+count = 50
 
 kana_set = simple_kana_to_romaji
 
@@ -80,9 +81,12 @@ def pickKana(n):
 
 
 if __name__ == "__main__":
+    successes = 0
+
+    print("AKS\nTNH\nMYR\n W")
 
     # Pick 100 random hiragana
-    challenge_set = pickKana(50)
+    challenge_set = pickKana(count)
 
     # newlines for ticker and input
     print("\n" * (2 + gap), end="")
@@ -123,6 +127,8 @@ if __name__ == "__main__":
             kana = challenge_set[0]
 
             print(kana_set[kana], end="", flush=True)
+
+            success -= 1
             continue
 
         # Get input as hiragana
@@ -131,3 +137,6 @@ if __name__ == "__main__":
         # Check if we should moce on
         if kana == challenge_set[0]:
             challenge_set = challenge_set[1:]
+            successes += 1
+    
+    print(f"Completed {successes}/{count}")
