@@ -207,12 +207,16 @@ kana_to_romaji = {
     "ん": ["n", "nn", "n ", "xn"]
 }
 
+problems = [""]
+
 def _simple_kana_to_romaji():
     output = {}
 
+    
+
     # Iterate through each kana
     for kana in list(kana_to_romaji.keys()):
-        if len(kana) == 1:
+        if len(kana) == 1 and kana not in problems:
             output[kana] = kana_to_romaji[kana]
     
     return output

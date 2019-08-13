@@ -82,7 +82,7 @@ def pickKana(n):
 if __name__ == "__main__":
 
     # Pick 100 random hiragana
-    challenge_set = pickKana(20)
+    challenge_set = pickKana(50)
 
     # newlines for ticker and input
     print("\n" * (2 + gap), end="")
@@ -110,6 +110,20 @@ if __name__ == "__main__":
         # Check if we should stop the game
         if data == "＝":
             break
+        
+        # Check if we should explain
+        if data == "＋":
+            # Move to saved position
+            print("\u001b[u", end="", flush=True)
+
+            # Move down 1
+            print("\u001b[1B", end="", flush=True)
+            
+            # Print the options
+            kana = challenge_set[0]
+
+            print(kana_set[kana], end="", flush=True)
+            continue
 
         # Get input as hiragana
         kana = acceptchar(data)
