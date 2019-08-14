@@ -2,6 +2,8 @@ from luts import kana_to_romaji, romaji_to_kana, simple_kana_to_romaji
 import random
 import os
 
+import time
+
 ## Term info ##
 term = os.popen('stty size', 'r').read().split()
 term_height, term_width = int(term[0]), int(term[1]) - 5
@@ -97,6 +99,9 @@ if __name__ == "__main__":
     # Save the cursor position
     print("\u001b[s", end="", flush=True)
 
+
+    start_time = time.time()
+
     # Run until we are out of kana
     while len(challenge_set) > 0:
 
@@ -139,4 +144,9 @@ if __name__ == "__main__":
             challenge_set = challenge_set[1:]
             successes += 1
     
-    print(f"Completed {successes}/{count}")
+    if successes != 0:
+        kps = round(round(time.time() - start_time) / successes)
+    else:
+        kps = 0
+    
+    print(f"Completed {successes}/{count} in ~{round(time.time() - start_time)} seconds　({kps} seconds per kana)")
