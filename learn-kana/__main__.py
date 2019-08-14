@@ -101,6 +101,7 @@ if __name__ == "__main__":
 
 
     start_time = time.time()
+    problems = []
 
     # Run until we are out of kana
     while len(challenge_set) > 0:
@@ -110,6 +111,9 @@ if __name__ == "__main__":
 
         # read input
         data = handleInput()
+
+        if data == " ":
+            continue
 
         # Check if we should skip
         if data == "ー":
@@ -134,6 +138,7 @@ if __name__ == "__main__":
             print(kana_set[kana], end="", flush=True)
 
             successes -= 1
+            problems.append(kana)
             continue
 
         # Get input as hiragana
@@ -141,8 +146,11 @@ if __name__ == "__main__":
 
         # Check if we should moce on
         if kana == challenge_set[0]:
-            challenge_set = challenge_set[1:]
             successes += 1
+        else:
+            problems.append(kana)
+        
+        challenge_set = challenge_set[1:]
     
     if successes != 0:
         kps = round(round(time.time() - start_time) / successes)
@@ -150,3 +158,4 @@ if __name__ == "__main__":
         kps = 0
     
     print(f"Completed {successes}/{count} in ~{round(time.time() - start_time)} seconds　({kps} seconds per kana)")
+    print(f"You had issues with:\n{problems}")
