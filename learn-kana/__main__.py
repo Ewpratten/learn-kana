@@ -10,7 +10,7 @@ term_height, term_width = int(term[0]), int(term[1]) - 5
 # term_width = 30 # i have issues
 
 gap = 3
-count = 100
+count = 50
 max_count = 50
 
 kana_set = simple_kana_to_romaji
@@ -191,4 +191,5 @@ if __name__ == "__main__":
 
     print(
         f"Completed {successes}/{count} in ~{round(time.time() - start_time)} seconds　({kps} seconds per kana)")
-    print(f"You had issues with:\n{problems}")
+    # print(f"You had issues with:\n{problems}")
+
