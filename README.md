@@ -5,7 +5,7 @@ After learning the basics of [Hiragana](https://en.wikipedia.org/wiki/Hiragana),
 This tool has only been tested on Linux with mozc input. [This blog post](https://retrylife.ca/blog/2019/08/12/setting-up-ja) describes how I set this up.
 
 ## Usage
-With `python3.7` installed, run:
+With `python3.7` installed, run the script.
 ```
 $ python3 learn-kana
 けっるべののおぺぃてヶにちひやまゎぎだそはゅもさだ
